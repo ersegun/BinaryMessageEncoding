@@ -1,0 +1,8 @@
+bin/
+obj/
+*.user
+*.vs
+*.suo
+*.db
+*.log
+Dockerfile
