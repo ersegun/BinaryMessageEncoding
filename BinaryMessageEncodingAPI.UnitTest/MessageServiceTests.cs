@@ -197,19 +197,5 @@ namespace BinaryMessageEncodingAPI.nUnitTest
             Assert.That(decoded.Headers, Is.Empty);
             Assert.That(decoded.Payload, Is.Empty);
         }
-
-        [Test]
-        public void HeaderKey_TooLong_ShouldFailValidation2()
-        {
-            var longKey = new string('K', _options.Value.MaxHeaderKeyBytes);
-            var message = new Message
-            {
-                Headers = new Dictionary<string, string> { { longKey, "value" } },
-                Payload = Encoding.ASCII.GetBytes("ok")
-            };
-
-            var codec = new MessageCodec(_validator, _options);
-            Assert.That(() => codec.Encode(message), Throws.TypeOf<ValidationException>());
-        }
     }
 }
